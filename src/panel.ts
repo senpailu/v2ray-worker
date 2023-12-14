@@ -83,7 +83,7 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
         ${htmlMessage}
         <div class="px-4 py-2 bg-light">
           <label for="sub-link" class="form-label fw-bold">
-            Your subscription link for v2ray clients/ <span dir="rtl">لینک ثبت نام شما برای کلاینت‌های v2ray</span>
+            Your subscription link for v2ray clients
             (v2rayN, v2rayNG, v2rayA, Matsuri, Nekobox, Nekoray...)
           </label>
           <input id="sub-link" readonly value="https://${url.hostname}/sub" class="p-1" style="width: calc(100% - 150px)">
@@ -91,7 +91,7 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
         </div>
         <div class="px-4 py-2 bg-light">
           <label for="clash-link" class="form-label fw-bold">
-            Your subscription link for clash clients/ <span dir="rtl">لینک ثبت نام شما برای کلاینت‌های کلش</span>
+            Your subscription link for clash clients
             (Clash, ClashX, ClashMeta...)
           </label>
           <input id="clash-link" readonly value="https://${url.hostname}/clash" class="p-1" style="width: calc(100% - 150px)">
