@@ -32,31 +32,31 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
     var htmlMessage = ""
     const message = url.searchParams.get("message")
     if (message == "success") {
-      htmlMessage = `<div class="p-1 bg-success text-white fw-bold text-center">Settings saved successfully. / تنظیمات با موفقیت ذخیره شد.</div>`
+      htmlMessage = `<div class="p-1 bg-success text-white fw-bold text-center">Settings saved successfully.</div>`
     } else if (message == "error") {
-      htmlMessage = `<div class="p-1 bg-danger text-white fw-bold text-center">Failed to save settings! / خطا در ذخیره‌ی تنظیمات!</div>`
+      htmlMessage = `<div class="p-1 bg-danger text-white fw-bold text-center">Failed to save settings!</div>`
     }
 
     var passwordSection = ""
     if (hash) {
       passwordSection = `
       <div class="mb-3 p-1">
-        <button type="submit" name="reset_password" value="1" class="btn btn-danger">Remove Password / حذف کلمه عبور</button>
+        <button type="submit" name="reset_password" value="1" class="btn btn-danger">Remove Password</button>
       </div>
       `
     } else {
       passwordSection = `
       <div class="mb-3 p-1 bg-warning">
         <label for="password" class="form-label fw-bold">
-          Enter password, if you want to protect panel / در صورتی که میخواهید از پنل محافظت کنید، یک کلمه‌ی عبور وارد کنید:
+          Enter password, if you want to protect panel:
         </label>
         <input type="password" name="password" class="form-control" id="password" minlength="6"/>
         <div class="form-text">
-          Minimum 6 chars / حداقل ۶ کاراکتر وارد کنید.
+          Minimum 6 chars.
         </div>
         <p></p>
         <label for="password-confirmation" class="form-label fw-bold">
-          Confirm your password / کلمه عبور را مجددا وارد کنید:
+          Confirm your password:
         </label>
         <input type="password" name="password_confirmation" class="form-control" id="password-confirmation" minlength="6"/>
       </div>
@@ -100,29 +100,29 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
         <form class="px-4 py-4 border-top" method="post">
           <div class="mb-1 p-1">
             <label for="includes" class="form-label fw-bold">
-              Merged and original configs / کانفیگ‌های اصلی و ترکیبی:
+              Merged and original configs:
             </label>
             <div id="includes">
               <div class="form-check">
                 <input type="checkbox" name="merged" value="yes" class="form-check-input" id="merged-ckeck" ${includeMergedConfigs == "yes" ? "checked" : ""}>
-                <label class="form-check-label" for="merged-ckeck">Include configs merged with worker / کانفیگ‌های ترکیب شده با ورکر را اضافه کن</label>
+                <label class="form-check-label" for="merged-ckeck">Include configs merged with worker</label>
               </div>
               <div class="form-check">
                 <input type="checkbox" name="original" value="yes" class="form-check-input" id="original-ckeck" ${includeOriginalConfigs == "yes" ? "checked" : ""}>
-                <label class="form-check-label" for="original-ckeck">Include original config / کانفیگ‌های اصلی را اضافه کن</label>
+                <label class="form-check-label" for="original-ckeck">Include original config</label>
               </div>
             </div>
           </div>
           <div class="mb-1 p-1">
             <label for="max-configs" class="form-label fw-bold">
-              Max. mumber of configs / حداکثر تعداد کانفیگ:
+              Max. mumber of configs:
             </label>
             <input type="number" name="max" class="form-control" id="max-configs" value="${maxConfigs}" min="5"/>
             <div class="form-text"></div>
           </div>
           <div class="mb-1 p-1">
             <label for="type" class="form-label fw-bold">
-              Protocols / پروتکل‌ها:
+              Protocols:
             </label>
             <div id="type">
               <div class="form-check">
@@ -145,22 +145,22 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
           </div>
           <div class="mb-1 p-1">
             <label for="clean-ip" class="form-label fw-bold">
-              Clean IP or clean subdomain / آی‌پی تمیز یا ساب‌دامین آی‌پی تمیز
+              Clean IP or clean subdomain
             </label>
             <textarea rows="3" name="clean_ips" class="form-control" id="clean-ip">${cleanDomainIPs.join("\n")}</textarea>
             <div class="form-text">
-              One IP or subdomain per line. / در هر سطر یک آی‌پی یا ساب‌دامین وارد کنید.
+              One IP or subdomain per line.
             </div>
             <div>
               <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ip-scanner-modal">
-                Find clean IPs / پیدا کردن آی‌پی تمیز
+                Find clean IPs
               </button>
               <div class="modal fade" id="ip-scanner-modal" tabindex="-1" aria-labelledby="ip-scanner-modal-label" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">
-                        Close / بستن  
+                        Close  
                       </button>
                     </div>
                     <div class="modal-body">
@@ -177,7 +177,7 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
             </label>
             <textarea rows="3" name="alpn_list" class="form-control" id="alpn-list">${alpnList.join("\n")}</textarea>
             <div class="form-text">
-              One item per line. / در هر سطر یک آیتم وارد کنید.
+              One item per line.
             </div>
           </div>
           <div class="mb-1 p-1">
@@ -186,30 +186,30 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
             </label>
             <textarea rows="3" name="fp_list" class="form-control" id="fp-list">${fingerPrints.join("\n")}</textarea>
             <div class="form-text">
-              One item per line. / در هر سطر یک آیتم وارد کنید.
+              One item per line.
             </div>
           </div>
           <div class="mb-1 p-1">
             <label for="providers" class="form-label fw-bold">
-              Providers / تامین کنندگان:
+              Providers:
             </label>
             <textarea rows="7" name="providers" class="form-control" id="providers">${providers.join("\n")}</textarea>
             <div class="form-text">
-              One link per line. / در هر سطر یک لینک وارد کنید. (Accepts base64, yaml, raw)
+              One link per line. (Accepts base64, yaml, raw)
             </div>
           </div>
           <div class="mb-1 p-1">
             <label for="configs" class="form-label fw-bold">
-              Personal configs / کانفیگ‌های شخصی:
+              Personal configs:
             </label>
             <textarea rows="3" name="configs" class="form-control" id="configs">${configs.join("\n")}</textarea>
             <div class="form-text">
-              One config per line. / در هر سطر یک کانفیگ وارد کنید.
+              One config per line.
             </div>
           </div>
           ${passwordSection}
-          <button type="submit" name="save" value="save" class="btn btn-primary">Save / ذخیره</button>
-          <button type="submit" name="reset" value="reset" class="btn btn-warning">Reset / بازنشانی</button>
+          <button type="submit" name="save" value="save" class="btn btn-primary">Save</button>
+          <button type="submit" name="reset" value="reset" class="btn btn-warning">Reset</button>
         </form>
       </div>
     </body>
@@ -243,7 +243,7 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
           </div>
           <div class="px-5 py-2 bg-light">
             <label for="sub-link" class="form-label fw-bold">
-              Your subscription link for v2ray clients/ <span dir="rtl">لینک ثبت نام شما برای کلاینت‌های v2ray</span>
+              Your subscription link for v2ray clients
               (v2rayN, v2rayNG, v2rayA, Matsuri, Nekobox, Nekoray...)
             </label>
             <input id="sub-link" readonly value="https://${url.hostname}/sub" class="p-1" style="width: calc(100% - 150px)">
@@ -251,15 +251,14 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
           </div>
           <div class="px-5 py-2 bg-light">
             <label for="clash-link" class="form-label fw-bold">
-              Your subscription link for clash clients/ <span dir="rtl">لینک ثبت نام شما برای کلاینت‌های کلش</span>
+              Your subscription link for clash clients
               (Clash, ClashX, ClashMeta...)
             </label>
             <input id="clash-link" readonly value="https://${url.hostname}/clash" class="p-1" style="width: calc(100% - 150px)">
             <button onclick="var tmp=document.getElementById('clash-link');tmp.select();tmp.setSelectionRange(0,99999);navigator.clipboard.writeText(tmp.value)" class="btn btn-primary p-1 mb-1">Copy</button>
           </div>
           <div class="mx-5 my-2 p-1 border bg-warning text-center">
-            <p>The "settings" variable is not defined! Please define a namespace in Workers/KV section and add a variable named "settings" in your worker settings, as described in the video.</p>  
-            <p dir="rtl">متغیر settings تغریف نشده است. لطفا مطابق ویدیوی آموزشی، در بخش KV یک namespace تعریف کرده و در بخش متغیرهای ورکر، متغیر settings را اضافه نمایید.</p>
+            <p>The "settings" variable is not defined! Please define a namespace in Workers/KV section and add a variable named "settings" in your worker settings, as described in the video.</p>
           </div>
           <div class="mx-5 my-2 p-1 border bg-success text-white text-center">
             <p>You can continue using your worker without control panel.</p>  

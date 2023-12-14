@@ -7,7 +7,7 @@ export async function GetLogin(request: Request, env: Env): Promise<Response> {
   let htmlMessage = ""
   const message = url.searchParams.get("message")
   if (message == "error") {
-    htmlMessage = `<div class="p-3 bg-danger text-white fw-bold text-center">Invalid password / کلمه عبور معتبر نمی‌باشد!</div>`
+    htmlMessage = `<div class="p-3 bg-danger text-white fw-bold text-center">Invalid password!</div>`
   }
 
   const htmlContent = `
@@ -29,14 +29,14 @@ export async function GetLogin(request: Request, env: Env): Promise<Response> {
         ${htmlMessage}
         <form class="mt-5 p-3 row g-3" method="post">
           <div class="col-auto">
-            Enter password / کلمه‌ی عبور را وارد کنید:
+            Enter password:
           </div>
           <div class="col-auto">
             <label for="inputPassword2" class="visually-hidden">Password</label>
             <input type="password" class="form-control" id="inputPassword2" placeholder="Password" name="password" minlength="6" required>
           </div>
           <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Confirm identity / تایید هویت</button>
+            <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
           </div>
         </form>
       </div>
